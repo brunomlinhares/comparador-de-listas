@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Listas</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="color-scheme" content="light dark">
+</head>
+<body>
+    <button id="btnAmostra" class="btn-amostra">
+        <svg viewBox="0 0 24 24" width="16" height="16">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 8c0 1.11-.9 2-2 2h-2v2h4v2H9v-4c0-1.11.9-2 2-2h2V9H9V7h4c1.1 0 2 .89 2 2v2z" fill="currentColor"/>
+        </svg>
+        Gerar números
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <svg viewBox="0 0 24 24" width="20" height="20" id="theme-icon">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" fill="currentColor"/>
+        </svg>
+    </button>
+    <div class="color-picker">
+        <input type="color" id="colorPicker" title="Escolher cor principal">
+    </div>
+    <div class="container">
+        <h1>Comparador de Listas</h1>
+        <div class="separadores">
+            <div class="separador-group">
+                <label>Separador de entrada:</label>
+                <div class="separador-buttons">
+                    <button class="separator-btn active" data-value="\n" data-type="entrada">Nova linha</button>
+                    <button class="separator-btn" data-value="," data-type="entrada">Vírgula</button>
+                    <button class="separator-btn" data-value=";" data-type="entrada">Ponto e vírgula</button>
+                </div>
+            </div>
+            <div class="separador-group">
+                <label>Separador de saída:</label>
+                <div class="separador-buttons">
+                    <button class="separator-btn active" data-value="\n" data-type="saida">Nova linha</button>
+                    <button class="separator-btn" data-value=", " data-type="saida">Vírgula</button>
+                    <button class="separator-btn" data-value="; " data-type="saida">Ponto e vírgula</button>
+                </div>
+            </div>
+        </div>
+        <div class="input-areas">
+            <div>
+                <h3>Lista 1</h3>
+                <div class="lista-container">
+                    <textarea id="lista1" placeholder="Ex:
+🍎 Maçã
+🍌 Banana
+🍊 Laranja
+🍐 Pera
+🍇 Uva" class="lista"></textarea>
+                    <div class="estatisticas" id="estatisticas1">
+                        <div class="estat-card">
+                            
+                            <span>0</span>
+                            <small>Total</small>
+                        </div>
+                        <div class="estat-card">
+                            
+                            <span>0</span>
+                            <small>Únicos</small>
+                        </div>
+                        <div class="estat-card">
+                            <span>-</span>
+                            <small>Soma</small>
+                        </div>
+                        <div class="estat-card">
+                            <span>-</span>
+                            <small>Média</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Lista 2</h3>
+                <div class="lista-container">
+                    <textarea id="lista2" placeholder="Ex:
+🍎 Maçã
+🥝 Kiwi
+🍊 Laranja
+🍍 Abacaxi
+🥭 Manga" class="lista"></textarea>
+                    <div class="estatisticas" id="estatisticas2">
+                        <div class="estat-card">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" fill="currentColor"/>
+                            </svg>
+                            <span>0</span>
+                            <small>Total</small>
+                        </div>
+                        <div class="estat-card">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 15h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2zm-8 8h2v2H9zm0-4h2v2H9zm0-4h2v2H9zm0-4h2v2H9zm8 0h2v2h-2z" fill="currentColor"/>
+                            </svg>
+                            <span>0</span>
+                            <small>Únicos</small>
+                        </div>
+                        <div class="estat-card">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="currentColor"/>
+                            </svg>
+                            <span>-</span>
+                            <small>Soma</small>
+                        </div>
+                        <div class="estat-card">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4 6v4h4v2h-4v4h-2v-4H9v-2h4V9h2z" fill="currentColor"/>
+                            </svg>
+                            <span>-</span>
+                            <small>Média</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button onclick="compararListas('uniao')">
+                <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                União
+            </button>
+            <button onclick="compararListas('intersecao')">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M15,12 A6,6 0 0,1 9,18 A6,6 0 0,1 3,12 A6,6 0 0,1 9,6 A6,6 0 0,1 15,12 M21,12 A6,6 0 0,1 15,18 A6,6 0 0,1 9,12 A6,6 0 0,1 15,6 A6,6 0 0,1 21,12" fill="none" stroke="currentColor"/></svg>
+                Interseção
+            </button>
+            <button onclick="compararListas('diferenca1')">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M14,12 A6,6 0 1,0 8,6 A6,6 0 0,0 14,12" fill="none" stroke="currentColor"/></svg>
+                Exclusivos Lista 1
+            </button>
+            <button onclick="compararListas('diferenca2')">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path d="M10,12 A6,6 0 1,1 16,18 A6,6 0 0,1 10,12" fill="none" stroke="currentColor"/></svg>
+                Exclusivos Lista 2
+            </button>
+        </div>
+        <div class="resultado">
+            <h3>Resultado: <span class="contador" id="contadorResultado">Itens: 0</span></h3>
+            <div id="resultado"></div>
+            <button onclick="copiarResultado()">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z" fill="currentColor"/>                </svg>                Copiar <span class="shortcut">(Ctrl+C)</span>            </button>        </div>    </div>    <script src="script.js"></script></body></html>
